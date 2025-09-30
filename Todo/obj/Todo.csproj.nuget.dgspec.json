@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj": {}
+    "c:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj": {
+    "c:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj",
+        "projectUniqueName": "c:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj",
         "projectName": "Todo",
-        "projectPath": "C:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj",
+        "projectPath": "c:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\Todo.csproj",
         "packagesPath": "C:\\Users\\wilek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\obj\\",
+        "outputPath": "c:\\Users\\wilek\\Projekt\\BuildList_wileks99\\Todo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
