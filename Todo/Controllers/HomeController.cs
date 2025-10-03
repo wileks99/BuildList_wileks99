@@ -9,85 +9,104 @@ using Microsoft.Extensions.Logging;
 using Todo.Models;
 using Todo.Models.ViewModels;
 
-namespace Todo.Controllers;
-
-public class HomeController : Controller
+namespace Todo.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly ILogger<HomeController> _logger;
 
-    public IActionResult Index()
-    {
-        var todoListViewModel = GetAllTodos();
-        return View(todoListViewModel);
-    }
-
-    internal TodoViewModel GetAllTodos()
-    {
-        List<TodoItem> todoList = new();
-
-
-        using (SqliteConnection con =
-               new SqliteConnection("Data Source=db.sqlite"))
+        public HomeController(ILogger<HomeController> logger)
         {
-            using (var tableCmd = con.CreateCommand())
-            {
-                con.Open();
-                tableCmd.CommandText = "SELECT * FROM todo";
+            _logger = logger;
+        }
 
-                using (var reader = tableCmd.ExecuteReader())
+        public IActionResult Index()
+        {
+            var todoListViewModel = GetAllTodos();
+            return View(todoListViewModel);
+        }
+
+        internal TodoViewModel GetAllTodos()
+        {
+            List<TodoItem> todoList = new();
+
+
+            using (SqliteConnection con =
+                   new SqliteConnection("Data Source=db.sqlite"))
+            {
+                using (var tableCmd = con.CreateCommand())
                 {
-                    if (reader.HasRows)
+                    con.Open();
+                    tableCmd.CommandText = "SELECT * FROM todo";
+
+                    using (var reader = tableCmd.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            todoList.Add(
-                                new TodoItem
-                                {
-                                    Id = reader.GetInt32(0),
-                                    Name = reader.GetString(1)
-                                });
+                            while (reader.Read())
+                            {
+                                todoList.Add(
+                                    new TodoItem
+                                    {
+                                        Id = reader.GetInt32(0),
+                                        Name = reader.GetString(1)
+                                    });
+                            }
+                        }
+                        else
+                        {
+                            return new TodoViewModel
+                            {
+                                TodoList = todoList
+                            };
                         }
                     }
-                    else
+                    ;
+                }
+            }
+
+            return new TodoViewModel
+            {
+                TodoList = todoList
+            };
+        }
+
+        public void Insert(TodoItem todo)
+        {
+            using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+            {
+                using (var tableCmd = con.CreateCommand())
+                {
+                    con.Open();
+                    tableCmd.CommandText = $"INSERT INTO todo (name) VALUES ('{todo.Name}')";
+                    try
                     {
-                        return new TodoViewModel
-                        {
-                            TodoList = todoList
-                        };
+                        tableCmd.ExecuteNonQuery();
+                    }
+                    catch (SqliteException ex)
+                    {
+                        Console.WriteLine(ex.Message);
                     }
                 }
-                ;
             }
         }
-        
-        return new TodoViewModel
-        {
-            TodoList = todoList
-        };
-    }
 
-    public void Insert(TodoItem todo)
-    {
-        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
-            using (var tableCmd = con.CreateCommand())
+            using (SqliteConnection con =
+                    new SqliteConnection("Data Source=db.sqlite"))
             {
-                con.Open();
-                tableCmd.CommandText = $"INSERT INTO todo (name) VALUES ('{todo.Name}')";
-                try
+                using (var tableCmd = con.CreateCommand())
                 {
+                    con.Open();
+                    tableCmd.CommandText = $"DELETE from todo WHERE Id = '{id}'";
                     tableCmd.ExecuteNonQuery();
                 }
-                catch (SqliteException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
             }
+
+            return Json(new { });
         }
     }
 }

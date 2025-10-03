@@ -23,7 +23,6 @@ c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\scopedcss\bundle
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\scopedcss\projectbundle\Todo.bundle.scp.css
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\ep4rr7mo0i-b9sayid5wm.gz
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\fc7h4jd2t2-61n19gt1b8.gz
-c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\nsc2yllrpk-xtxxf3hu2r.gz
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\9vreofb19j-bqjiyaj88i.gz
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\fovvfqp3ty-c2jlpeoesf.gz
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\4eooez9qak-erw9l3u2r3.gz
@@ -122,3 +121,4 @@ c:\Users\wilek\Projekt\BuildList_wileks99\Todo\bin\Debug\net9.0\runtimes\win-x86
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\Todo.csproj.AssemblyReference.cache
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\Todo.sourcelink.json
 c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\Todo.csproj.Up2Date
+c:\Users\wilek\Projekt\BuildList_wileks99\Todo\obj\Debug\net9.0\compressed\nsc2yllrpk-a7n9h2sq0c.gz
