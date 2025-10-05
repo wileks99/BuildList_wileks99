@@ -72,7 +72,7 @@ namespace Todo.Controllers
             };
         }
 
-        public void Insert(TodoItem todo)
+        public RedirectResult Insert(TodoItem todo)
         {
             using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
             {
@@ -90,6 +90,7 @@ namespace Todo.Controllers
                     }
                 }
             }
+            return Redirect("https://localhost:7105/");
         }
 
         [HttpPost]
